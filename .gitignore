@@ -1,0 +1,21 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+storage/
+.pytest_cache/
+*.egg-info/
+.ipynb_checkpoints/
+
+# The recorded demo video (~410MB) exceeds GitHub's 100MB single-file limit and doesn't belong
+# in the source-code repository anyway -- it ships in the submission archive's own 01_Video/
+# folder, per the Submission Guide's required structure, not inside 04_Source_Code.
+04_Submission/01_Video/
+
+# evaluation/results/ is tracked, but only the current, cited evidence files --
+# older superseded gate runs are excluded rather than accumulating in the repo.
+evaluation/results/*
+!evaluation/results/metrics_20260918T183312Z.json
+!evaluation/results/ground_truth_check_20260913T162426Z.json
+!evaluation/results/results.jsonl
+!evaluation/results/nfr03_human_review_summary.json
