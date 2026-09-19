@@ -26,7 +26,10 @@ rather than a customer-facing chatbot.
 
 Built and evaluated against the 80-ticket validation set, the system achieves an 80.0%
 first-contact resolution rate on this run against a 42–44% baseline, a 20.0% escalation rate
-against a 56–58% baseline, and a 96.2% retrieval hit rate. Of the sixteen escalations that did
+against a 56–58% baseline, and a 96.2% retrieval hit rate — figures verified reproducible under a
+warm response cache, but, found only by a pre-submission clean-room test, not under a genuinely
+cold one; the hidden grading set will always be cold, and Section 7's sixth caveat gives the full
+detail and the actual cold-run numbers this test produced. Of the sixteen escalations that did
 occur, only 31.2% (five tickets) were still avoidable per ground truth — down from the 49.1%
 baseline found in discovery — and four of those five are intentional escalations: three are
 tickets whose intent category is designed to always require a human regardless of confidence,
@@ -501,8 +504,12 @@ in Section 6; the second confirmed that fix; the third followed the generation o
 the fourth, whose figures are reported below, followed the governance-critical routing fix found
 during video-preparation testing. Later reruns during the final days of the project, undertaken
 to verify the fairness figures discussed below and to confirm that an unrelated telemetry fix in
-the retrieval module had not changed system behavior, produced identical aggregate figures to
-the fourth run, which is itself evidence of the determinism required by acceptance criterion A5.
+the retrieval module had not changed system behavior, produced identical aggregate figures to the
+fourth run — **but, found only by the clean-room test described in the honesty section below,
+this reproducibility held because those reruns shared a warm response cache with the runs before
+them, not because the underlying model calls are actually deterministic.** A genuinely cold run,
+with no prior cache, does not reproduce these exact figures; see the dedicated caveat after
+Table 5.
 
 Table 5 presents the headline figures.
 
@@ -521,7 +528,7 @@ Table 5 presents the headline figures.
 | Private-data detections | — | 0 | 0 |
 | Blank auto-responses | — | 0 | 0 (was 9/80 before the routing fix) |
 
-Five caveats apply to the figures above, and each is stated here rather than left implicit.
+Six caveats apply to the figures above, and each is stated here rather than left implicit.
 First, these are results on an eighty-ticket validation run, not the hidden, considerably larger
 grading set this harness has never seen and never will before submission — the figures describe
 this system's behavior on data it was allowed to see repeatedly, not a claim about the hidden
@@ -538,7 +545,23 @@ of the two newly escalating tickets is the disclosed `VAL-0037` trade-off discus
 accepted cost of closing a real governance miss rather than a regression. Fifth, this run's
 latency figures reflect a mixture of cached and fresh model calls, since neither prompt changed
 between the third and fourth runs — the fully cold first run, at p95 11.8 seconds, is the more
-representative worst-case figure and the one this report treats as honest.
+representative worst-case figure and the one this report treats as honest. Sixth, and found only
+during a pre-submission clean-room test (clone the pushed repository fresh, install dependencies,
+run the documented gate command with no prior state) rather than during the build itself: these
+exact figures do not reproduce in a genuinely cache-free environment. That test produced 76.2%
+first-contact resolution, 23.8% escalation (19/80), and 76.25% classification accuracy against
+this table's 80.0%/20.0%/81.25% — retrieval hit rate stayed exactly 96.2% in both runs, which
+narrows the cause to the classification model call specifically, not an environment or dependency
+difference. Every earlier claim in this project that routing is deterministic (acceptance
+criterion A5) was verified by re-running inside the same working directory, where the response
+cache already held entries for these tickets from prior sessions — those reruns were replaying
+cached responses, not genuinely re-querying the model. The free-tier provider behind this system
+does not honor `temperature=0`/`seed=0` as a hard determinism guarantee in live, uncached calls, a
+known limitation of several LLM API aggregators. The hidden grading set will always hit this cold
+path, since the harness has never seen it before, so a grader's own run should be expected to
+produce numbers in the same direction as this table but not identical to it. Full detail,
+including why this is judged a provider-level effect rather than a code defect, is in the PRD
+revision log §4f.
 
 **Latency, examined specifically.** A p95 of between 5.75 and 11.8 seconds, depending on cache
 state, is well above the three-second target either reading. The cause is specific rather than
@@ -736,10 +759,12 @@ project has tried to apply throughout: while finalizing this submission, the fai
 above were re-verified against a freshly run gate, and an earlier version of this section, and
 of this report, was found to be citing figures from a `results.jsonl` file that had since been
 silently overwritten by a later, unrelated gate run — the file carries no per-run identifier, so
-every invocation of the harness replaces it. The aggregate figures in Table 5 have stayed exactly
-stable across every rerun since the FR-16 fix, which is reassuring evidence of the determinism
-required by acceptance criterion A5, but this particular segment-level breakdown had not stayed
-stable in the same way, and the earlier, now-corrected version of this section had reported
+every invocation of the harness replaces it. The aggregate figures in Table 5 stayed exactly
+stable across every rerun since the FR-16 fix — later shown by a clean-room test (§7's sixth
+caveat, PRD revision log §4f) to be a warm-cache artifact rather than genuine A5 determinism, since
+a truly cold run does not reproduce them — but this particular segment-level breakdown had not
+stayed stable in the same way even under that same warm cache, and the earlier, now-corrected
+version of this section had reported
 standard tier at 64.3% against an enterprise best of 87.5%, rather than the 69.0% against a
 business best of 93.3% reported here. The qualitative finding is unchanged and, if anything,
 strengthened by having been independently reproduced twice with the same underlying pattern —
@@ -799,7 +824,10 @@ categories were a reliable proxy for the must-not-auto-respond flag, which direc
 tabulation against the labelled data disproved; that a single language-model call at default
 sampling settings would be adequate for a routing-critical classification step, which a
 twenty-ticket determinism re-test disproved by producing different predictions run to run on
-identical input, fixed by moving to zero-temperature, seeded, cached calls; and that
+identical input, addressed by moving to zero-temperature, seeded, cached calls — though a later
+clean-room test found this fix genuinely holds only when the response cache is warm, not for a
+truly cold run, itself recorded as a further revision-log entry (§4f) rather than left
+uncorrected; and that
 documentation phrasing mismatches were the dominant source of error for classification as well
 as retrieval, which held for retrieval but not fully for classification, where a distinct
 surface-level confusion between feature requests phrased in billing language and genuine billing
@@ -863,14 +891,27 @@ governance gap is a deterministic list of specific terms, not an exhaustive one 
 one real near-miss found so far, but the residual risk is a ticket that is both misclassified and
 phrased without using any term the current list recognizes, and the list should be reviewed
 periodically against real near-miss cases, the same way this one was actually found, rather than
-assumed complete because it has passed every test run against it so far.
+assumed complete because it has passed every test run against it so far. Fifth, and found only by
+a pre-submission clean-room test rather than during the build: acceptance criterion A5's
+determinism does not survive a cold response cache. Every headline figure in Table 5 was verified
+reproducible only by re-running inside an environment that had already cached these tickets'
+model responses; a genuinely fresh clone, with the documented gate command run exactly as the
+README specifies, produced meaningfully different numbers (76.2% resolution, 23.8% escalation,
+76.25% classification accuracy against this table's 80.0%/20.0%/81.25%) while retrieval stayed
+byte-identical — narrowing the cause to the free-tier model provider not honoring
+`temperature=0`/`seed=0` as a hard guarantee on live, uncached calls, not to this project's own
+routing or classification code. The hidden grading set will always hit this cold path.
 
-Two concrete next steps follow directly from this evaluation, stated as actions rather than
+Three concrete next steps follow directly from this evaluation, stated as actions rather than
 vague intentions. The one remaining retrieval miss behind the standard-tier gap should be chased
 down specifically, to determine whether it is isolated or symptomatic of a broader phrasing
 pattern in how standard-tier customers write their tickets, before this system is trusted with
-that segment's full ticket volume. The latency gap should be closed by making classification and
-generation run concurrently rather than sequentially, and by evaluating whether a faster
+that segment's full ticket volume. The determinism gap should be closed properly rather than
+worked around — either by finding a free-tier provider that actually honors a seed parameter on
+live calls, or by explicitly reporting a range across repeated cold runs instead of a single
+point figure, since a cache is a development convenience, not a substitute for genuine model
+determinism. The latency gap should be closed by making classification and generation run
+concurrently rather than sequentially, and by evaluating whether a faster
 free-tier model changes the picture materially on its own. The human two-rater review that
 NFR-03 was originally written to require — previously the single largest gap between what this
 evaluation section demonstrated and what the requirement actually specified — has since been

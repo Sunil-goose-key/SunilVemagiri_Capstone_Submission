@@ -24,7 +24,7 @@
 | Assumption from v1 | Did it hold? | What you found instead | What you changed because of it |
 |---|---|---|---|
 | The interview's named categories (billing/refund, data residency) are the right proxy for `must_not_auto_respond` | **No** | The dataset's actual labelling ties the flag deterministically to 4 different intent classes, including one not mentioned in any interview (`unclear_request` — i.e. if the classifier itself can't confidently name the intent, that alone is grounds to hard-escalate) | Rewrote FR-07 against the verified data rather than the interview alone; treated the interview as a hypothesis to check, not a specification |
-| A single LLM call at default settings is adequate for a routing-critical classification step | **No** | Default-temperature sampling produced different predictions run-to-run on an identical 20-ticket re-test — which would fail A5's literal "run the same ticket twice" test if triggered during grading, since routing depends on classification output | Added `temperature=0`/`seed=0` and a disk-backed response cache keyed on exact prompt content to `src/llm_client.py`; verified two full runs now produce byte-identical output |
+| A single LLM call at default settings is adequate for a routing-critical classification step | **No** | Default-temperature sampling produced different predictions run-to-run on an identical 20-ticket re-test — which would fail A5's literal "run the same ticket twice" test if triggered during grading, since routing depends on classification output | Added `temperature=0`/`seed=0` and a disk-backed response cache keyed on exact prompt content to `src/llm_client.py`; verified two full runs now produce byte-identical output **— true, but only for cache-hit reruns in the same environment. A genuinely cold run does not reproduce these figures; see §4f, found during the pre-submission clean-room test.** |
 | A default relevance floor "in the middle of the range" (0.35, out of an assumed 0-1 scale) is a safe starting point | **No** | This embedding/chromadb combination's relevance scores aren't a 0-1 cosine scale — real relevant matches scored as low as 0.09 and irrelevant ones scored strongly negative. 0.35 silently discarded correct retrieval results. | Recalibrated empirically against probe queries before building anything downstream of retrieval, rather than tuning against the harness after the fact |
 | Documentation phrasing mismatches (Ines's finding) are the main source of classifier/retrieval error | **Partially** | Confirmed for retrieval (fixed by semantic embeddings). For classification specifically, found a *different* failure mode: surface-level topic overlap between `feature_request` and `billing_query` when a feature request is phrased using billing/spend vocabulary | Added an explicit disambiguation rule to the classification prompt (PR-01 v1.1) rather than assuming semantic retrieval alone would generalize to classification |
 
@@ -81,6 +81,22 @@ collapsing the exact distinction this entire log has maintained since §4d, betw
 proxy evidence and the human review NFR-03 was actually written to require. The review only
 counts as complete because both raters were real people working independently, which is the
 whole reason the resulting agreement rate means anything.
+
+## 4f. The clean-room test found that A5 determinism doesn't survive a cold cache
+
+| What was found | How it was found | Fix | Verified |
+|---|---|---|---|
+| The report's headline figures (80.0% FCR, 20.0% escalation, 81.25% classification accuracy) do not reproduce in a genuinely fresh environment. A clean clone of the pushed repository, fresh venv, dependencies installed from `requirements.txt`, and the documented gate command run exactly as the README specifies produced **76.2% FCR, 23.8% escalation (19/80), and 76.25% classification accuracy** — retrieval hit rate stayed exactly 96.2% (identical), but classification and everything downstream of it (routing, FCR, escalation) drifted. | Doing the clean-room test the Submission Guide itself recommends before packaging ("clone your own repository into a fresh directory... roughly half of all students discover a missing step at this point") — not by inspecting code, by actually running the documented commands in a location with no pre-existing state. | No code fix applied — this is a disclosed limitation, not a bug to patch before submission. Root cause: every earlier "verified reproducible" claim for A5 was tested by re-running inside the *same* working directory, where `src/llm_client.py`'s disk-backed response cache (`storage/llm_cache.json`, gitignored, never committed) had already accumulated entries for these exact 80 tickets from prior testing sessions. Those reruns were replaying cached responses, not genuinely re-querying the model. A fresh clone has no cache, so every call is a live round-trip, and the free-tier model behind OpenRouter does not honor `temperature=0`/`seed=0` as a hard determinism guarantee in practice — a known limitation of several LLM API aggregators, not something this project's own routing/classification code controls. | Retrieval reproducing exactly while classification did not is itself the verification that this is a model-provider-level effect, not an environment or dependency-version issue — a broken dependency resolution would most plausibly have also shifted retrieval or caused outright failures, not left it byte-identical while only the LLM-judged classification drifted. |
+
+This is the clearest illustration in the whole project of why the clean-room test matters as much
+as the gate run itself: A5 ("same input always yields same output") was verified honestly at every
+stage of the build, and every verification was still accidentally measuring the cache, not the
+model. The hidden grading set will always hit the cold path this test just exposed, since the
+harness has never seen those tickets before — so the report's exact cited percentages should be
+read as one honest, reproducible-from-its-own-metrics-file run, not as a number a grader's own
+execution is likely to match exactly. The qualitative story (findability was the problem, the
+system substantially fixes it, three real defects were found and fixed through testing) does not
+depend on any single run's exact decimal points and still holds.
 
 ## 5. The reflection
 
