@@ -1,0 +1,5462 @@
+{
+  "run_metadata": {
+    "run_timestamp": "2026-09-13T16:24:26.806580+00:00",
+    "method": "LLM judge (PR-04) over ground_truth_responses.json -- an automated proxy, NOT the human review (>=50 samples, 2 raters) NFR-03's verification method specifies",
+    "tickets_checked": 200
+  },
+  "volume": {
+    "processed": 200,
+    "answered": 198,
+    "escalated_or_blocked": 2,
+    "judge_call_failures": 3
+  },
+  "must_mention_coverage": {
+    "total_points": 413,
+    "covered": 198,
+    "coverage_pct": 47.9,
+    "note": "only entries with a non-empty must_mention list contribute (59/200 in the full ground-truth set)"
+  },
+  "must_not_claim_safety": {
+    "tickets_with_answer_and_judged": 195,
+    "tickets_with_at_least_one_violation": 1,
+    "violation_rate_pct": 0.51,
+    "violations": [
+      {
+        "ticket_id": "DEV-0092",
+        "claims": [
+          "a refund has been issued",
+          "the issue has been fixed on our side",
+          "a specific delivery date for a fix"
+        ]
+      }
+    ],
+    "note": "must_not_claim is populated on all 200/200 ground-truth entries -- this is the headline safety figure"
+  },
+  "citation_accuracy_proxy": {
+    "tickets_with_expected_doc_ids": 200,
+    "citation_hits": 189,
+    "hit_rate_pct": 94.5,
+    "note": "checks whether ANY expected_doc_id appears among the tickets's cited doc_ids -- a proxy for citation accuracy, not the same as NFR-03's 'does the passage support the sentence' definition"
+  },
+  "per_ticket_results": [
+    {
+      "ticket_id": "DEV-0485",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ACCT-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-ACCT-001",
+        "DOC-SEC-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "you can do this by checking the project settings",
+        "you may need to adjust the permissions to organisation scope"
+      ],
+      "mentions_missed": [
+        "Check if the role was granted at project scope rather than organisation scope."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "answer does not mention refunds, fixes, or specific delivery dates, but does mention adjusting permissions to organisation scope"
+    },
+    {
+      "ticket_id": "DEV-0323",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-003",
+        "DOC-AUTH-003",
+        "DOC-ONB-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, and does not make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0071",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-003",
+        "DOC-API-003",
+        "DOC-DEPLOY-001",
+        "DOC-AUTH-003",
+        "DOC-AUTH-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "raw body"
+      ],
+      "mentions_missed": [
+        "idempotent"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a specific action to take (checking the log), but does not address idempotence or any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0377",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-002",
+        "DOC-DATA-001",
+        "DOC-API-002",
+        "DOC-DATA-001",
+        "DOC-API-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "page size"
+      ],
+      "mentions_missed": [
+        "cursor"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides information about the export endpoint, but does not mention cursor or delivery date. It does not claim a refund has been issued, the issue has been fixed, or a specific delivery date for a fix."
+    },
+    {
+      "ticket_id": "DEV-0360",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-003",
+        "DOC-AUTH-002",
+        "DOC-AUTH-003",
+        "DOC-AUTH-002",
+        "DOC-SEC-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page.",
+        "They must match exactly, including the trailing path.",
+        "Inspect a failing assertion and confirm the NameID is the user's email address in lower case.",
+        "Enable just-in-time provisioning if new users should be created on first login, and set a default role for provisioned users."
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides specific troubleshooting and configuration steps, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0428",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ONB-001",
+        "DOC-ONB-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-ONB-002",
+        "DOC-ONB-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, but does not make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0331",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-API-002",
+        "DOC-DEPLOY-002",
+        "DOC-SEC-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information and does not promise or imply any of the claims to be avoided."
+    },
+    {
+      "ticket_id": "DEV-0423",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information, but does not make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0113",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-API-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information and does not make any of the claims to avoid making."
+    },
+    {
+      "ticket_id": "DEV-0183",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-001",
+        "DOC-API-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "per organisation",
+        "backoff"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides general information about rate limits but does not address the specific points that should be mentioned."
+    },
+    {
+      "ticket_id": "DEV-0163",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information, but does not make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0477",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-001",
+        "DOC-SEC-001",
+        "DOC-SEC-003",
+        "DOC-SEC-003",
+        "DOC-SEC-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer focuses on immediate security measures and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0309",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-003",
+        "DOC-DATA-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, and does not make any of the claims that should be avoided."
+    },
+    {
+      "ticket_id": "DEV-0390",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ACCT-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-ACCT-001",
+        "DOC-SEC-002",
+        "DOC-SEC-001",
+        "DOC-ACCT-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "Check the effective permissions view for the user, which resolves direct roles and group memberships together.",
+        "Confirm the invitation was accepted.",
+        "Pending invitations appear in a separate section and expire after seven days."
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides some relevant information, but does not address the must_not_claim points. It does not provide any information about refunds, issue resolution, or specific delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0004",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims that must be covered, and does not make any claims that must not be made."
+    },
+    {
+      "ticket_id": "DEV-0478",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-001",
+        "DOC-BILL-002",
+        "DOC-BILL-002",
+        "DOC-BILL-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "usage breakdown",
+        "billing period"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer provides information about billing period and usage breakdown, but does not make any claims about refunds, issue fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0403",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-003",
+        "DOC-AUTH-003",
+        "DOC-AUTH-002",
+        "DOC-AUTH-002",
+        "DOC-SEC-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "They must match exactly, including the trailing path."
+      ],
+      "mentions_missed": [
+        "Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page.",
+        ""
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a specific condition for matching URLs, but does not mention refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0431",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-001",
+        "DOC-API-001",
+        "DOC-API-002",
+        "DOC-AUTH-004"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "per organisation",
+        "backoff"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides information about limits and backoff, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0380",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "To roll back the failed release, open the revisions page for the service and identify the last revision that was healthy.",
+        "Select roll back on that revision.",
+        "Traffic moves within roughly thirty seconds and no rebuild takes place.",
+        "If the release included a database migration, roll the migration back before the service, or the older code will encounter a schema it does not expect."
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a step-by-step guide on how to roll back a failed release, but does not mention any claims that should be avoided."
+    },
+    {
+      "ticket_id": "DEV-0333",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-003",
+        "DOC-AUTH-003",
+        "DOC-ONB-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, but does not make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0125",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-003",
+        "DOC-API-003",
+        "DOC-AUTH-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "raw body"
+      ],
+      "mentions_missed": [
+        "idempotent"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer mentions the raw body but does not mention idempotence. It does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0441",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-API-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "Jobs covering more than a million records commonly take several minutes",
+        "If the original link has expired, request a fresh link from the exports page",
+        "The underlying file is retained for seven days"
+      ],
+      "mentions_missed": [
+        "Check the exports page for job status"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer provides some troubleshooting information, but does not address job status or issue resolution."
+    },
+    {
+      "ticket_id": "DEV-0050",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-001",
+        "DOC-BILL-002",
+        "DOC-BILL-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "usage breakdown",
+        "billing period"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides specific information about the usage breakdown and billing period, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0474",
+      "action": "escalate",
+      "can_answer": false,
+      "expected_doc_ids": [
+        "DOC-ONB-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-ONB-002",
+        "DOC-ONB-002"
+      ],
+      "citation_hit": false,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "notes": "no answer generated (escalated/blocked)"
+    },
+    {
+      "ticket_id": "DEV-0260",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-003",
+        "DOC-SEC-003",
+        "DOC-SEC-001",
+        "DOC-DATA-002",
+        "DOC-DATA-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, and does not make any of the claims that should be avoided."
+    },
+    {
+      "ticket_id": "DEV-0412",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-004"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-004",
+        "DOC-SEC-002",
+        "DOC-DEPLOY-004",
+        "DOC-SEC-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "Store secrets as environment variables rather than printing them to logs.",
+        "You can check the environment overrides page to see values that differ from the defaults for each environment.",
+        "After changing configuration, redeploy to ensure running containers pick up the new values."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not cover any of the must_mention points and does not make any of the claims in must_not_claim."
+    },
+    {
+      "ticket_id": "DEV-0047",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-001",
+        "DOC-AUTH-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "account lock",
+        "session cookie"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting steps but does not make any claims about refunds, fixes, or specific delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0233",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ONB-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-ONB-002",
+        "DOC-ONB-002",
+        "DOC-DATA-003",
+        "DOC-DATA-003"
+      ],
+      "citation_hit": false,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "Externalise configuration before migrating. Anything read from a file on disk should move to environment variables or secrets.",
+        "Externalise configuration before migrating. Anything read from a file on disk should move to environment variables or secrets.",
+        "Externalise configuration before migrating. Anything read from a file on disk should move to environment variables or secrets."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention migration, and does not claim any of the specific claims listed."
+    },
+    {
+      "ticket_id": "DEV-0106",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-003",
+        "DOC-DATA-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer does not mention any of the claims, so it does not cover any of them and does not violate any of the claims."
+    },
+    {
+      "ticket_id": "DEV-0198",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-INT-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-INT-002",
+        "DOC-PERF-001",
+        "DOC-PERF-001",
+        "DOC-INT-002"
+      ],
+      "citation_hit": false,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "A delay of up to two minutes on metrics is expected before they are sent."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any delay or metrics, and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0015",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-001",
+        "DOC-SEC-001",
+        "DOC-ACCT-001",
+        "DOC-AUTH-004",
+        "DOC-AUTH-004"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims in must_mention, and does not make any claims about refunds, fixes, or specific delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0247",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-001",
+        "DOC-BILL-002",
+        "DOC-BILL-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "billing period"
+      ],
+      "mentions_missed": [
+        "usage breakdown"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention the usage breakdown, but does mention the billing period. It does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0471",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-003",
+        "DOC-AUTH-003",
+        "DOC-ONB-001",
+        "DOC-AUTH-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0317",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-003",
+        "DOC-DATA-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims that must be made, and does not make any of the claims that must not be made."
+    },
+    {
+      "ticket_id": "DEV-0299",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-INT-001",
+        "DOC-INT-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-INT-002",
+        "DOC-INT-002",
+        "DOC-DEPLOY-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, but does not make any claims about refunds, fixes, or specific delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0296",
+      "action": "escalate",
+      "can_answer": false,
+      "expected_doc_ids": [
+        "DOC-ONB-001",
+        "DOC-ONB-002"
+      ],
+      "cited_doc_ids": [],
+      "citation_hit": false,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "notes": "no answer generated (escalated/blocked)"
+    },
+    {
+      "ticket_id": "DEV-0443",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ONB-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-ONB-001",
+        "DOC-DEPLOY-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "Resources belong to services and services belong to projects",
+        "Connect a repository or push a container image",
+        "The build service detects common project layouts automatically",
+        "Set any environment variables the application needs before the first deployment rather than after it",
+        "Deploy",
+        "then watch the logs for the first sixty seconds",
+        "Most first-deployment problems are visible immediately in startup output"
+      ],
+      "mentions_missed": [
+        "create a project",
+        "a service within it"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a step-by-step guide for deploying an application, but does not mention creating a project or service, nor does it claim a refund has been issued, the issue has been fixed, or a specific delivery date for a fix."
+    },
+    {
+      "ticket_id": "DEV-0335",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-001",
+        "DOC-AUTH-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-002",
+        "DOC-AUTH-002",
+        "DOC-AUTH-001",
+        "DOC-AUTH-003",
+        "DOC-AUTH-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "account lock",
+        "session cookie"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention account lock or session cookie, and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0362",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-003",
+        "DOC-API-003",
+        "DOC-DEPLOY-001",
+        "DOC-INT-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "raw body",
+        "idempotent"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [],
+      "notes": "JUDGE CALL FAILED, not counted as covered or violated: Expecting ',' delimiter: line 9 column 139 (char 625)",
+      "judge_error": true
+    },
+    {
+      "ticket_id": "DEV-0037",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-INT-001",
+        "DOC-INT-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-INT-002",
+        "DOC-INT-002",
+        "DOC-DEPLOY-001",
+        "DOC-DATA-001",
+        "DOC-DEPLOY-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting steps but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0242",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-001",
+        "DOC-BILL-002",
+        "DOC-BILL-002",
+        "DOC-API-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "usage breakdown",
+        "billing period"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "answer provides troubleshooting steps for understanding an invoice, does not address fixes or refunds"
+    },
+    {
+      "ticket_id": "DEV-0044",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-BILL-003",
+        "DOC-API-001",
+        "DOC-BILL-001",
+        "DOC-BILL-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "an account owner can raise it immediately from the billing page",
+        "service resumes within a minute",
+        "consider configuring alerts at fifty, eighty and ninety-five per cent of allowance"
+      ],
+      "mentions_missed": [
+        "check the current period usage against the plan allowance on the billing page"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "answer covers some of the must_mention points, but does not mention others. does not make any of the must_not_claim claims."
+    },
+    {
+      "ticket_id": "DEV-0157",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention refunds, fixes, or delivery dates, and does not promise any of these claims."
+    },
+    {
+      "ticket_id": "DEV-0231",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-003",
+        "DOC-DATA-001",
+        "DOC-SEC-003",
+        "DOC-DATA-001",
+        "DOC-DATA-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "the retention period varies by plan type",
+        "For Standard plans, retention is seven days",
+        "For Business plans, retention is thirty days",
+        "For Enterprise plans, retention is ninety days",
+        "Since you're on a Business plan, the last six months should be within the retention period",
+        "You can export these records",
+        "exports are not subject to retention limits"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides detailed information about retention periods and plan types, but does not mention refunds, fixes, or specific delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0382",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-API-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-BILL-003",
+        "DOC-BILL-002",
+        "DOC-API-001",
+        "DOC-BILL-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points and does not make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0167",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "cursor",
+        "page size"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention cursors or page sizes, and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0228",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-001",
+        "DOC-BILL-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "usage breakdown",
+        "billing period"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides specific information about the usage breakdown and billing period, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0190",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-003",
+        "DOC-AUTH-003",
+        "DOC-AUTH-002",
+        "DOC-AUTH-002",
+        "DOC-SEC-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "They must match exactly, including the trailing path."
+      ],
+      "mentions_missed": [
+        "Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page.",
+        ""
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a specific condition for matching URLs, but does not mention refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0033",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-003",
+        "DOC-AUTH-003",
+        "DOC-AUTH-002",
+        "DOC-AUTH-002",
+        "DOC-AUTH-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "They must match exactly, including the trailing path."
+      ],
+      "mentions_missed": [
+        "Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page.",
+        ""
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a specific condition for matching URLs, but does not mention refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0059",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-003",
+        "DOC-DATA-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "you can find the region where the organisation's primary data is stored by checking the organisation settings page",
+        "you can review the backup replication setting to see if it's configured to meet the customer's single-region requirement",
+        "you can also explain that metadata such as account names and billing records is stored centrally regardless of the data region"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides information about data storage locations and backup replication settings, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0276",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-001",
+        "DOC-API-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "per organisation",
+        "backoff"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides general information about rate limits but does not address the specific points that should be mentioned."
+    },
+    {
+      "ticket_id": "DEV-0455",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-001",
+        "DOC-BILL-002",
+        "DOC-BILL-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "usage breakdown",
+        "billing period"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides guidance on how to investigate the issue, but does not address the issue itself or provide a resolution."
+    },
+    {
+      "ticket_id": "DEV-0336",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-PERF-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-PERF-001",
+        "DOC-PERF-001",
+        "DOC-PERF-002",
+        "DOC-INT-002",
+        "DOC-API-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "A large gap points to contention or queueing rather than a uniformly slower service.",
+        "Check memory utilisation across instances.",
+        "Sustained utilisation above eighty per cent typically shows up as latency before it shows up as failure.",
+        "Review the dependency timing breakdown on the trace view to identify whether the time is being spent in your service or waiting on another."
+      ],
+      "mentions_missed": [
+        "Compare median and 95th percentile latency on the metrics page."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides general troubleshooting advice, but does not mention any of the required topics or claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0383",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-PERF-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-PERF-001",
+        "DOC-PERF-001",
+        "DOC-API-001",
+        "DOC-API-001",
+        "DOC-PERF-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, but does not make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0415",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-001",
+        "DOC-BILL-002",
+        "DOC-BILL-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "usage breakdown",
+        "billing period"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer provides information on possible cause of charges and how to check usage breakdown, but does not mention refunds, fixes, or specific delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0104",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-DEPLOY-002",
+        "DOC-SEC-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims, so none of them are violated or covered."
+    },
+    {
+      "ticket_id": "DEV-0094",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ACCT-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-ACCT-001",
+        "DOC-AUTH-004",
+        "DOC-SEC-001",
+        "DOC-ACCT-001",
+        "DOC-AUTH-004"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims in must_mention, and does not make any of the claims in must_not_claim."
+    },
+    {
+      "ticket_id": "DEV-0066",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "cursor",
+        "page size"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer provides information on how to pull large extracts and iterate through results, but does not mention refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0464",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-003",
+        "DOC-DATA-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the must_mention items, and does not promise or imply any of the must_not_claim items."
+    },
+    {
+      "ticket_id": "DEV-0206",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-001",
+        "DOC-AUTH-001",
+        "DOC-SEC-001",
+        "DOC-AUTH-003",
+        "DOC-AUTH-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "session cookie"
+      ],
+      "mentions_missed": [
+        "account lock"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a specific cause of authentication failure, but does not mention account lock or make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0205",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-003",
+        "DOC-DATA-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims, so none are covered or violated."
+    },
+    {
+      "ticket_id": "DEV-0017",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ACCT-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-ACCT-001",
+        "DOC-SEC-002",
+        "DOC-SEC-001",
+        "DOC-ACCT-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "Check the effective permissions view for the user, which resolves direct roles and group memberships together.",
+        "Confirm the invitation was accepted.",
+        "Pending invitations appear in a separate section and expire after seven days."
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides some relevant information, but does not address the must_not_claim points. It does not provide any information about refunds, issue resolution, or specific delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0292",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-003",
+        "DOC-DATA-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "",
+        "",
+        ""
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any specific information and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0447",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-API-002",
+        "DOC-SEC-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information and does not make any of the claims to avoid making."
+    },
+    {
+      "ticket_id": "DEV-0270",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ONB-001",
+        "DOC-ONB-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-ONB-001",
+        "DOC-DEPLOY-001",
+        "DOC-ONB-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "resources belong to services and services belong to projects",
+        "connect a repository or push a container image",
+        "the build service detects common project layouts automatically",
+        "set any environment variables the application needs before the first deployment rather than after it",
+        "deploy, then watch the logs for the first sixty seconds",
+        "most first-deployment problems are visible immediately in startup output"
+      ],
+      "mentions_missed": [
+        "a project",
+        "a service within it"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a step-by-step guide for the first deployment, covering project creation, service setup, resource ownership, deployment methods, build service behavior, environment variable setup, and problem visibility. It does not mention refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0182",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-002",
+        "DOC-API-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "cursor",
+        "page size"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention cursors or page sizes, and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0084",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-INT-001",
+        "DOC-INT-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-INT-001",
+        "DOC-INT-001",
+        "DOC-AUTH-004"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims in must_not_claim, and does not cover any of the points in must_mention."
+    },
+    {
+      "ticket_id": "DEV-0092",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-BILL-003",
+        "DOC-API-001",
+        "DOC-BILL-001",
+        "DOC-BILL-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_cleared": [],
+      "notes": "Answer does not mention any of the must_mention items, but does mention a refund, issue being fixed, and delivery date, violating the must_not_claim items."
+    },
+    {
+      "ticket_id": "DEV-0452",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-001",
+        "DOC-BILL-002",
+        "DOC-BILL-002",
+        "DOC-API-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "usage breakdown",
+        "billing period"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides information about the invoice and billing, but does not address any issues or provide a fix."
+    },
+    {
+      "ticket_id": "DEV-0098",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims that should be covered, and does not make any claims that should not be made."
+    },
+    {
+      "ticket_id": "DEV-0396",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-003",
+        "DOC-AUTH-003",
+        "DOC-AUTH-002",
+        "DOC-AUTH-002",
+        "DOC-AUTH-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "They must match exactly, including the trailing path."
+      ],
+      "mentions_missed": [
+        "Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page.",
+        ""
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a specific condition for matching URLs, but does not mention refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0263",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer does not mention any of the must_mention items and does not promise any of the must_not_claim items."
+    },
+    {
+      "ticket_id": "DEV-0122",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims, so none of the must_mention items are covered and none of the must_not_claim items are violated."
+    },
+    {
+      "ticket_id": "DEV-0008",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-002",
+        "DOC-AUTH-002",
+        "DOC-AUTH-001",
+        "DOC-SEC-001",
+        "DOC-AUTH-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "account lock",
+        "session cookie"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention account lock or session cookie, and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0391",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-001",
+        "DOC-SEC-001",
+        "DOC-SEC-002",
+        "DOC-SEC-003",
+        "DOC-SEC-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims, so none are covered or violated."
+    },
+    {
+      "ticket_id": "DEV-0279",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-API-002",
+        "DOC-DEPLOY-002",
+        "DOC-INT-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information and does not promise or imply any of the claims to be avoided."
+    },
+    {
+      "ticket_id": "DEV-0145",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-004",
+        "DOC-SEC-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-004",
+        "DOC-AUTH-004"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "Read-only keys cannot write",
+        "project-scoped keys cannot reach organisation endpoints"
+      ],
+      "mentions_missed": [
+        "Check the scopes attached to the key."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a specific explanation for the behavior of read-only and project-scoped keys, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0483",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-003",
+        "DOC-DATA-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the must_mention items, and does not make any of the claims in must_not_claim."
+    },
+    {
+      "ticket_id": "DEV-0368",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "cursor",
+        "page size"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [],
+      "notes": "JUDGE CALL FAILED, not counted as covered or violated: Expecting ',' delimiter: line 9 column 129 (char 582)",
+      "judge_error": true
+    },
+    {
+      "ticket_id": "DEV-0099",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-BILL-003",
+        "DOC-API-001",
+        "DOC-BILL-002",
+        "DOC-BILL-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "Specifically, they can check the current period usage against the plan allowance on the billing page",
+        "decide between a hard spend cap and overage",
+        "and configure alerts at 50%, 80%, and 95% of allowance",
+        "If the cap has stopped a production service, an account owner can raise it immediately from the billing page",
+        "and the service will resume within a minute"
+      ],
+      "mentions_missed": [
+        "To raise the spend cap immediately, an account owner can follow the steps in [DOC-BILL-003] Usage limits, overage and spend controls."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer provides specific steps for account owners to raise spend cap, but does not mention refunds, fixes, or specific delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0068",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-PERF-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-PERF-003",
+        "DOC-DATA-002",
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-001",
+        "DOC-DATA-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention refunds, fixes, or delivery dates, and does not claim any of these."
+    },
+    {
+      "ticket_id": "DEV-0479",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-001",
+        "DOC-AUTH-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-001",
+        "DOC-AUTH-001",
+        "DOC-SEC-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "account lock",
+        "session cookie"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting steps but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0248",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-003",
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-SEC-003",
+        "DOC-DATA-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0320",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-002",
+        "DOC-API-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "cursor",
+        "page size"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention cursors or page sizes, and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0135",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-003",
+        "DOC-DATA-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, and does not make any of the claims that should be avoided."
+    },
+    {
+      "ticket_id": "DEV-0213",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-PERF-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-PERF-001",
+        "DOC-PERF-001",
+        "DOC-PERF-002",
+        "DOC-API-001",
+        "DOC-PERF-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer focuses on troubleshooting steps and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0351",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-003",
+        "DOC-SEC-003",
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-SEC-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "You can filter the audit log by date range to find the relevant period.",
+        "Every administrative action carries the user, the address and the outcome.",
+        "You can export the relevant period to object storage for anything needed beyond the retention window.",
+        "Exports are not subject to retention limits."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not cover any of the must_mention items, and does not make any of the claims in must_not_claim."
+    },
+    {
+      "ticket_id": "DEV-0221",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-001",
+        "DOC-API-001",
+        "DOC-API-002",
+        "DOC-BILL-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "per organisation",
+        "backoff"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer provides information about rate limits and backoff, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0174",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ONB-001",
+        "DOC-ONB-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-ONB-001",
+        "DOC-DEPLOY-001",
+        "DOC-ONB-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "resources belong to services and services belong to projects",
+        "connect a repository or push a container image",
+        "the build service detects common project layouts automatically",
+        "set any environment variables the application needs before the first deployment rather than after it",
+        "deploy, then watch the logs for the first sixty seconds",
+        "most first-deployment problems are visible immediately in startup output"
+      ],
+      "mentions_missed": [
+        "a project",
+        "a service within it"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a step-by-step guide for the first deployment, covering project creation, service setup, resource ownership, deployment methods, build service behavior, environment variable setup, and problem visibility. It does not mention refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0222",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-004"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-004",
+        "DOC-INT-001",
+        "DOC-SEC-002",
+        "DOC-AUTH-004",
+        "DOC-SEC-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "To replace the key without taking the service down, create the replacement key first, deploy it, confirm traffic has moved, then revoke the old key.",
+        "To replace the key without taking the service down, create the replacement key first, deploy it, confirm traffic has moved, then revoke the old key.",
+        "To replace the key without taking the service down, create the replacement key first, deploy it, confirm traffic has moved, then revoke the old key."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer does not provide specific information about replacement key creation, and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0012",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-API-002",
+        "DOC-DEPLOY-002",
+        "DOC-INT-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information and does not promise or imply any of the claims to be avoided."
+    },
+    {
+      "ticket_id": "DEV-0430",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "cursor",
+        "page size"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention cursor pagination or page size, and does not imply any of the claims to be avoided."
+    },
+    {
+      "ticket_id": "DEV-0140",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ACCT-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-ACCT-001",
+        "DOC-SEC-001",
+        "DOC-AUTH-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "Check if the role was granted at project scope rather than organisation scope.",
+        "You can do this by reviewing the team members page and checking the role's scope."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer does not cover any of the must_mention items and does not make any of the claims in must_not_claim."
+    },
+    {
+      "ticket_id": "DEV-0298",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-003",
+        "DOC-AUTH-003",
+        "DOC-AUTH-002",
+        "DOC-AUTH-002",
+        "DOC-AUTH-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "They must match exactly, including the trailing path."
+      ],
+      "mentions_missed": [
+        "Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page.",
+        ""
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a specific condition for matching URLs, but does not mention refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0404",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-004",
+        "DOC-ACCT-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-004",
+        "DOC-SEC-002",
+        "DOC-DEPLOY-004",
+        "DOC-SEC-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "Store secrets as environment variables rather than printing them to logs.",
+        "You can check the environment overrides page to see values that differ from the defaults for each environment.",
+        "After changing configuration, redeploy to ensure running containers pick up the new values."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not cover any of the must_mention points and does not make any of the claims in must_not_claim."
+    },
+    {
+      "ticket_id": "DEV-0450",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-003",
+        "DOC-AUTH-003",
+        "DOC-AUTH-002",
+        "DOC-AUTH-002",
+        "DOC-SEC-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "Enable just-in-time provisioning if new users should be created on first login, and set a default role for provisioned users.",
+        "Also, inspect a failing assertion and confirm the NameID is the user's email address in lower case."
+      ],
+      "mentions_missed": [
+        "The assertion consumer service URL in your identity provider must match the value shown on the SSO settings page, including the trailing path."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting steps and configuration recommendations, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0265",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-003",
+        "DOC-DATA-001",
+        "DOC-SEC-003",
+        "DOC-DATA-001",
+        "DOC-DATA-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims that must be covered, and does not make any claims that must not be made."
+    },
+    {
+      "ticket_id": "DEV-0343",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-API-002",
+        "DOC-API-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information and does not make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0255",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-API-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-BILL-003",
+        "DOC-API-001",
+        "DOC-BILL-002",
+        "DOC-BILL-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer does not mention refunds, fixes, or delivery dates, so it does not cover any must_mention items and does not violate any must_not_claim items."
+    },
+    {
+      "ticket_id": "DEV-0451",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-PERF-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-002",
+        "DOC-DATA-002",
+        "DOC-DEPLOY-002",
+        "DOC-DATA-001"
+      ],
+      "citation_hit": false,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, and does not claim any of the forbidden claims."
+    },
+    {
+      "ticket_id": "DEV-0420",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-DEPLOY-002",
+        "DOC-SEC-003",
+        "DOC-API-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims, so none of them are violated or covered."
+    },
+    {
+      "ticket_id": "DEV-0349",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-PERF-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-PERF-003",
+        "DOC-PERF-003",
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-PERF-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a specific delivery date for a fix",
+        "the issue has been fixed on our side",
+        "a refund has been issued"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "answer provides troubleshooting steps and a link to a plan comparison page, but does not address any of the must_mention items or make any of the claims in must_not_claim"
+    },
+    {
+      "ticket_id": "DEV-0173",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-001",
+        "DOC-BILL-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "usage breakdown",
+        "billing period"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides information about the billing period and how to check it, but does not address any of the claims that should be avoided."
+    },
+    {
+      "ticket_id": "DEV-0446",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-DEPLOY-002",
+        "DOC-API-002",
+        "DOC-SEC-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information and does not promise or imply any of the claims to be avoided."
+    },
+    {
+      "ticket_id": "DEV-0171",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-ONB-001",
+        "DOC-PERF-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "port"
+      ],
+      "mentions_missed": [
+        "initial delay"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting steps for the health check timeout, but does not mention initial delay or provide any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0394",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-001",
+        "DOC-API-001",
+        "DOC-PERF-001",
+        "DOC-PERF-002",
+        "DOC-PERF-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "backoff"
+      ],
+      "mentions_missed": [
+        "per organisation"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides general information about rate limit headers but does not address the specific points mentioned in must_mention or make any claims from must_not_claim."
+    },
+    {
+      "ticket_id": "DEV-0297",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-004",
+        "DOC-ACCT-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-004",
+        "DOC-SEC-002",
+        "DOC-DEPLOY-004",
+        "DOC-SEC-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "Store secrets as environment variables rather than printing them to logs.",
+        "You can check the environment overrides page to see values that differ from the defaults for each environment.",
+        "After changing configuration, redeploy to ensure running containers pick up the new values."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not cover any of the must_mention points and does not make any of the claims in must_not_claim."
+    },
+    {
+      "ticket_id": "DEV-0387",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-004",
+        "DOC-SEC-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-004",
+        "DOC-AUTH-004",
+        "DOC-SEC-002",
+        "DOC-SEC-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "Review the scopes attached to the key.",
+        "Read-only keys cannot write, and project-scoped keys cannot reach organisation endpoints.",
+        "Revoked and expired keys are listed with the date and the user who acted."
+      ],
+      "mentions_missed": [
+        "Check the API keys page for the key's status and expiry.",
+        "Check the API keys page for the key's status and expiry."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides information about API key status, scopes, and limitations, but does not address refunds, fixes, or specific delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0075",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-003",
+        "DOC-DEPLOY-003",
+        "DOC-INT-001",
+        "DOC-ONB-001",
+        "DOC-INT-001"
+      ],
+      "citation_hit": false,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "port",
+        "initial delay"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0306",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-003",
+        "DOC-API-003",
+        "DOC-DEPLOY-001",
+        "DOC-AUTH-003",
+        "DOC-AUTH-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "raw body"
+      ],
+      "mentions_missed": [
+        "idempotent"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a specific action to take (checking the log), but does not address idempotence or any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0424",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ONB-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-ONB-002",
+        "DOC-ONB-002",
+        "DOC-DATA-003",
+        "DOC-DATA-003"
+      ],
+      "citation_hit": false,
+      "mentions_covered": [
+        "Run in parallel with the existing deployment",
+        "shift a small share of traffic before committing to the move",
+        "Plan the database migration separately from the application migration"
+      ],
+      "mentions_missed": [
+        "Externalise configuration before migrating",
+        "identify local state such as uploaded files or session data",
+        "move it to object storage or the managed database first"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer provides some practical advice on how to migrate, but does not cover all the must_mention points. It also does not make any of the claims in must_not_claim."
+    },
+    {
+      "ticket_id": "DEV-0300",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-002",
+        "DOC-SEC-002",
+        "DOC-INT-001",
+        "DOC-SEC-001",
+        "DOC-SEC-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "Revoke the exposed credential first",
+        "Removing it from the repository does not help, because it remains in the history"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a clear step to resolve the issue, but does not make any claims about a refund, fix, or delivery date."
+    },
+    {
+      "ticket_id": "DEV-0385",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-BILL-003",
+        "DOC-BILL-001",
+        "DOC-API-001",
+        "DOC-BILL-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, and does not claim any of the forbidden points."
+    },
+    {
+      "ticket_id": "DEV-0267",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-PERF-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-PERF-001",
+        "DOC-PERF-001",
+        "DOC-API-001",
+        "DOC-PERF-002",
+        "DOC-API-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "A large gap points to contention or queueing rather than a uniformly slower service.",
+        "Check memory utilisation across instances.",
+        "Sustained utilisation above eighty per cent typically shows up as latency before it shows up as failure."
+      ],
+      "mentions_missed": [
+        "Compare median and 95th percentile latency on the metrics page."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting advice and explains the implications of certain conditions, but does not address any of the must_mention points or make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0045",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-001",
+        "DOC-AUTH-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "account lock",
+        "session cookie"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting steps but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0449",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-001",
+        "DOC-ONB-001",
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-003",
+        "DOC-INT-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "port",
+        "initial delay"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting advice and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0211",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-001",
+        "DOC-SEC-002",
+        "DOC-SEC-001",
+        "DOC-SEC-002",
+        "DOC-AUTH-004"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "answer focuses on immediate action, does not provide any information about refunds, fixes, or delivery dates"
+    },
+    {
+      "ticket_id": "DEV-0172",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-API-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-BILL-003",
+        "DOC-BILL-002",
+        "DOC-BILL-001",
+        "DOC-API-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "Specifically, check the current period usage against the plan allowance on the billing page, and then decide deliberately between a hard spend cap, which stops the service, and overage, which continues at the listed rate.",
+        "If a cap has stopped a production service, an account owner can raise it immediately from the billing page and service resumes within a minute."
+      ],
+      "mentions_missed": [
+        "To raise the spend cap immediately, an account owner can follow the steps in [DOC-BILL-003] Usage limits, overage and spend controls."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention the specific document to follow, but it explains the process to decide between a hard spend cap and overage, and mentions that service resumes within a minute after raising the cap. It does not mention a refund, a fix, or a delivery date for a fix."
+    },
+    {
+      "ticket_id": "DEV-0009",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims, so none of the must_mention items are covered and none of the must_not_claim items are violated."
+    },
+    {
+      "ticket_id": "DEV-0243",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-PERF-001",
+        "DOC-PERF-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-PERF-001",
+        "DOC-PERF-001",
+        "DOC-INT-002",
+        "DOC-DEPLOY-002",
+        "DOC-ONB-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, and does not make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0465",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-003",
+        "DOC-API-003",
+        "DOC-DEPLOY-001",
+        "DOC-INT-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "raw body",
+        "idempotent"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides information about the raw request body and idempotence, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0434",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-002",
+        "DOC-API-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "cursor",
+        "page size"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer provides information on pagination and export endpoint, but does not mention refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0096",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ONB-001",
+        "DOC-ONB-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-ONB-002",
+        "DOC-ONB-002",
+        "DOC-DATA-003",
+        "DOC-DATA-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "Run in parallel with the existing deployment",
+        "shift a small share of traffic before committing to the move",
+        "Plan the database migration separately from the application migration"
+      ],
+      "mentions_missed": [
+        "Externalise configuration before migrating",
+        "identify local state such as uploaded files or session data",
+        "move it to object storage or the managed database first"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer provides some practical advice on how to migrate, but does not cover all the must_mention points. It also does not make any of the claims in must_not_claim."
+    },
+    {
+      "ticket_id": "DEV-0209",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-PERF-003",
+        "DOC-DATA-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-PERF-003",
+        "DOC-DATA-002",
+        "DOC-DATA-002",
+        "DOC-DEPLOY-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims, so none of them are covered or violated."
+    },
+    {
+      "ticket_id": "DEV-0496",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ONB-001",
+        "DOC-ONB-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-ONB-002",
+        "DOC-ONB-002",
+        "DOC-ONB-001",
+        "DOC-DATA-003",
+        "DOC-DATA-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "answer does not mention any of the claims, so all results are false"
+    },
+    {
+      "ticket_id": "DEV-0322",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-PERF-003",
+        "DOC-DATA-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-PERF-003",
+        "DOC-PERF-003",
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-PERF-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a specific delivery date for a fix",
+        "the issue has been fixed on our side",
+        "a refund has been issued"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "answer provides troubleshooting steps and a link to a plan comparison page, but does not address any of the must_mention items or make any of the claims in must_not_claim"
+    },
+    {
+      "ticket_id": "DEV-0463",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-001",
+        "DOC-BILL-002",
+        "DOC-BILL-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "usage breakdown",
+        "billing period"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides specific information about the invoice charges and billing period, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0144",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-003",
+        "DOC-AUTH-003",
+        "DOC-AUTH-002",
+        "DOC-AUTH-002",
+        "DOC-AUTH-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "They must match exactly, including the trailing path."
+      ],
+      "mentions_missed": [
+        "Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page.",
+        ""
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a specific condition for matching URLs, but does not mention refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0029",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-001",
+        "DOC-API-001",
+        "DOC-AUTH-004"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "per organisation",
+        "backoff"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides information about rate limits and backoff values, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0062",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-INT-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-INT-002",
+        "DOC-INT-002",
+        "DOC-SEC-003",
+        "DOC-DATA-001",
+        "DOC-DEPLOY-001"
+      ],
+      "citation_hit": false,
+      "mentions_covered": [
+        "a delay of up to two minutes on metrics, since they are aggregated before being sent",
+        "Verify the destination credential separately if delivery has stopped entirely",
+        "as expired credentials are the most common cause"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides specific troubleshooting steps and reasons, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0225",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-PERF-001",
+        "DOC-PERF-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-PERF-001",
+        "DOC-PERF-001",
+        "DOC-PERF-002",
+        "DOC-API-001",
+        "DOC-INT-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "A large gap points to contention or queueing rather than a uniformly slower service.",
+        "Check memory utilisation across instances.",
+        "Sustained utilisation above eighty per cent typically shows up as latency before it shows up as failure.",
+        "Review the dependency timing breakdown on the trace view to identify whether the time is being spent in your service or waiting on another."
+      ],
+      "mentions_missed": [
+        "Compare median and 95th percentile latency on the metrics page."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides general troubleshooting advice, but does not mention any of the required topics or claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0112",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-ONB-001",
+        "DOC-DEPLOY-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "port"
+      ],
+      "mentions_missed": [
+        "initial delay"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting steps but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0475",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-001",
+        "DOC-SEC-001",
+        "DOC-SEC-002",
+        "DOC-SEC-002",
+        "DOC-SEC-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, but does not make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0129",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-DEPLOY-002",
+        "DOC-SEC-003",
+        "DOC-API-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims, so none of them are violated or covered."
+    },
+    {
+      "ticket_id": "DEV-0315",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information, but does not make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0467",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-001",
+        "DOC-API-001",
+        "DOC-API-002",
+        "DOC-AUTH-004"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "per organisation"
+      ],
+      "mentions_missed": [
+        "backoff"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer explains rate limits per organisation and mentions checking response headers, but does not discuss backoff or the status of any issues."
+    },
+    {
+      "ticket_id": "DEV-0165",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-003",
+        "DOC-SEC-003",
+        "DOC-SEC-001",
+        "DOC-SEC-001",
+        "DOC-INT-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer provides troubleshooting advice and notes on log access, but does not address refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0472",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-PERF-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-002",
+        "DOC-DATA-002",
+        "DOC-DEPLOY-002",
+        "DOC-DATA-001"
+      ],
+      "citation_hit": false,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information, but does not make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0131",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "To roll back the failed release, open the revisions page for the service and identify the last revision that was healthy.",
+        "Select roll back on that revision.",
+        "Traffic moves within roughly thirty seconds and no rebuild takes place.",
+        "If the release included a database migration, roll the migration back before the service, or the older code will encounter a schema it does not expect."
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a step-by-step guide on how to roll back a failed release, but does not mention any claims that should be avoided."
+    },
+    {
+      "ticket_id": "DEV-0334",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-004",
+        "DOC-SEC-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-004",
+        "DOC-AUTH-004",
+        "DOC-SEC-002",
+        "DOC-INT-001",
+        "DOC-SEC-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, and does not make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0358",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ONB-001",
+        "DOC-ONB-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-ONB-002",
+        "DOC-ONB-002",
+        "DOC-DEPLOY-002",
+        "DOC-DATA-003",
+        "DOC-DATA-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "",
+        "",
+        ""
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "answer provides general advice on migration process, does not address specific claims"
+    },
+    {
+      "ticket_id": "DEV-0203",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-API-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-BILL-003",
+        "DOC-API-001",
+        "DOC-BILL-001",
+        "DOC-BILL-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims in must_mention, and does not make any claims from must_not_claim."
+    },
+    {
+      "ticket_id": "DEV-0269",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-004"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-004",
+        "DOC-INT-001",
+        "DOC-SEC-002",
+        "DOC-AUTH-004",
+        "DOC-SEC-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "To replace the key without taking the service down, create the replacement key first, deploy it, confirm traffic has moved, then revoke the old key.",
+        "To replace the key without taking the service down, create the replacement key first, deploy it, confirm traffic has moved, then revoke the old key.",
+        "To replace the key without taking the service down, create the replacement key first, deploy it, confirm traffic has moved, then revoke the old key."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer does not provide specific information about replacement key creation, and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0416",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-003",
+        "DOC-DEPLOY-003",
+        "DOC-INT-001",
+        "DOC-ONB-001",
+        "DOC-DEPLOY-002"
+      ],
+      "citation_hit": false,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "port",
+        "initial delay"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention ports or initial delay, and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0326",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-DEPLOY-002",
+        "DOC-SEC-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims, so none of them are violated or covered."
+    },
+    {
+      "ticket_id": "DEV-0369",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-001",
+        "DOC-BILL-003",
+        "DOC-BILL-002",
+        "DOC-BILL-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims, so none are covered or violated."
+    },
+    {
+      "ticket_id": "DEV-0216",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-002",
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-SEC-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "cursor",
+        "page size"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention cursors or page sizes, and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0301",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-API-002",
+        "DOC-SEC-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0324",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-002",
+        "DOC-DATA-002",
+        "DOC-SEC-003",
+        "DOC-BILL-002",
+        "DOC-SEC-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims to be covered, and does not make any of the claims to be avoided."
+    },
+    {
+      "ticket_id": "DEV-0014",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-003",
+        "DOC-AUTH-003",
+        "DOC-AUTH-002",
+        "DOC-AUTH-002",
+        "DOC-AUTH-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "They must match exactly, including the trailing path."
+      ],
+      "mentions_missed": [
+        "Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page.",
+        ""
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a specific condition for matching URLs, but does not mention refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0078",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-001",
+        "DOC-BILL-002",
+        "DOC-BILL-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "usage breakdown",
+        "billing period"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer provides troubleshooting steps but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0080",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-003",
+        "DOC-API-003",
+        "DOC-AUTH-003",
+        "DOC-AUTH-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "raw body"
+      ],
+      "mentions_missed": [
+        "idempotent"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer mentions the raw body but does not mention idempotence. It does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0448",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-003",
+        "DOC-SEC-003",
+        "DOC-SEC-001",
+        "DOC-DATA-002",
+        "DOC-DATA-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, and does not make any of the claims that should be avoided."
+    },
+    {
+      "ticket_id": "DEV-0433",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-003",
+        "DOC-DATA-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "you can find the region where the organisation's primary data is stored by checking the organisation settings page",
+        "you can review the backup replication setting to see if it's configured to meet the customer's single-region requirement",
+        "you can also explain that metadata such as account names and billing records is stored centrally regardless of the data region"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides information about data storage locations and backup replication settings, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0286",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-PERF-001",
+        "DOC-PERF-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-PERF-001",
+        "DOC-PERF-001",
+        "DOC-API-001",
+        "DOC-PERF-002",
+        "DOC-INT-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "Compare median and 95th percentile latency on the metrics page to see if there's a large gap, indicating contention or queueing.",
+        "Check memory utilisation across instances to see if it's above eighty percent, which can cause latency before it shows up as failure.",
+        "Review the dependency timing breakdown on the trace view to identify whether the time is being spent in your service or waiting on another."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "answer does not cover any of the must_mention items, and does not make any of the claims in must_not_claim"
+    },
+    {
+      "ticket_id": "DEV-0282",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-001",
+        "DOC-SEC-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-001",
+        "DOC-SEC-001",
+        "DOC-SEC-002",
+        "DOC-SEC-002",
+        "DOC-INT-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0262",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-INT-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-INT-002",
+        "DOC-PERF-001",
+        "DOC-PERF-001",
+        "DOC-INT-002"
+      ],
+      "citation_hit": false,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0482",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "cursor",
+        "page size"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [],
+      "notes": "JUDGE CALL FAILED, not counted as covered or violated: Expecting ',' delimiter: line 9 column 129 (char 582)",
+      "judge_error": true
+    },
+    {
+      "ticket_id": "DEV-0027",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "cursor",
+        "page size"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention cursor pagination or page size, and does not imply any of the claims to be avoided."
+    },
+    {
+      "ticket_id": "DEV-0310",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ONB-001",
+        "DOC-ONB-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-ONB-002",
+        "DOC-ONB-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims to be made, and does not imply or promise any of the claims to be avoided."
+    },
+    {
+      "ticket_id": "DEV-0224",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-ONB-001",
+        "DOC-DEPLOY-003",
+        "DOC-DEPLOY-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "port",
+        "initial delay"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting steps but does not address the specific points that should be mentioned. It also does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0481",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-002",
+        "DOC-API-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "cursor",
+        "page size"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer mentions pagination, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0048",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-API-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-BILL-003",
+        "DOC-BILL-002",
+        "DOC-API-001",
+        "DOC-BILL-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        ""
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer does not mention any of the must_mention items, and does not make any of the claims listed in must_not_claim."
+    },
+    {
+      "ticket_id": "DEV-0052",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-ONB-001",
+        "DOC-DEPLOY-003",
+        "DOC-DEPLOY-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "port",
+        "initial delay"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting steps but does not address the specific points that should be mentioned. It also does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0302",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ONB-001",
+        "DOC-ONB-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-ONB-001",
+        "DOC-DEPLOY-001",
+        "DOC-ONB-002",
+        "DOC-DEPLOY-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "a project, then a service within it",
+        "Resources belong to services and services belong to projects",
+        "Connect a repository or push a container image",
+        "The build service detects common project layouts automatically",
+        "Set any environment variables the application needs before the first deployment rather than after it",
+        "Deploy, then watch the logs for the first sixty seconds",
+        "Most first-deployment problems are visible immediately in startup output"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a step-by-step guide for project and service creation, resource connection, and deployment, but does not mention refunds, issue resolution, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0103",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-003",
+        "DOC-AUTH-003",
+        "DOC-AUTH-001",
+        "DOC-AUTH-002",
+        "DOC-SEC-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "They must match exactly, including the trailing path."
+      ],
+      "mentions_missed": [
+        "Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page.",
+        ""
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a specific condition for matching URLs, but does not mention refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0489",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-003",
+        "DOC-DATA-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "the Common causes section of the Data residency and regional storage documentation"
+      ],
+      "mentions_missed": [
+        "a second region"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer provides a specific reference to documentation, but does not mention replication or regions, and does not claim any of the listed fixes or refunds."
+    },
+    {
+      "ticket_id": "DEV-0316",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-API-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-BILL-003",
+        "DOC-BILL-001",
+        "DOC-API-001",
+        "DOC-BILL-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a specific delivery date for a fix",
+        "the issue has been fixed on our side",
+        "a refund has been issued"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "answer does not address any of the must_mention points and does not make any of the claims listed in must_not_claim"
+    },
+    {
+      "ticket_id": "DEV-0490",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-DEPLOY-002",
+        "DOC-API-002",
+        "DOC-SEC-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims, so none of them are violated or covered."
+    },
+    {
+      "ticket_id": "DEV-0268",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-002",
+        "DOC-DATA-002",
+        "DOC-SEC-003",
+        "DOC-BILL-002",
+        "DOC-SEC-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims to be covered, and does not make any of the claims to be avoided."
+    },
+    {
+      "ticket_id": "DEV-0036",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-ONB-001",
+        "DOC-PERF-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "port"
+      ],
+      "mentions_missed": [
+        "initial delay"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting steps for a health check timeout, but does not mention initial delay or provide any information about a fix or refund."
+    },
+    {
+      "ticket_id": "DEV-0192",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-API-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-001",
+        "DOC-BILL-001",
+        "DOC-BILL-003",
+        "DOC-BILL-002",
+        "DOC-BILL-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims in must_mention, and does not make any claims from must_not_claim."
+    },
+    {
+      "ticket_id": "DEV-0488",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-002",
+        "DOC-DATA-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "To roll back to the previous revision quickly, open the revisions page for the service, identify the last revision that was healthy, and select roll back on that revision.",
+        "If the release included a database migration, roll the migration back before the service, or the older code will encounter a schema it does not expect.",
+        "If the release included a database migration, roll the migration back before the service, or the older code will encounter a schema it does not expect."
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not provide information about revisions, database migrations, refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0318",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-004"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-004",
+        "DOC-DEPLOY-004",
+        "DOC-BILL-003",
+        "DOC-DEPLOY-002",
+        "DOC-SEC-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims, so none are covered or violated."
+    },
+    {
+      "ticket_id": "DEV-0414",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-BILL-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-BILL-003",
+        "DOC-BILL-003",
+        "DOC-BILL-002",
+        "DOC-API-001",
+        "DOC-BILL-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points and does not make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0081",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-ONB-001",
+        "DOC-DEPLOY-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "port",
+        "initial delay"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting advice and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0196",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-003",
+        "DOC-AUTH-003",
+        "DOC-ONB-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, and does not make any of the claims to avoid."
+    },
+    {
+      "ticket_id": "DEV-0019",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ACCT-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-ACCT-001",
+        "DOC-SEC-001",
+        "DOC-ACCT-001",
+        "DOC-AUTH-004",
+        "DOC-SEC-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not address any of the must_mention points, and does not promise any of the must_not_claim points."
+    },
+    {
+      "ticket_id": "DEV-0427",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-003",
+        "DOC-API-003",
+        "DOC-DEPLOY-001",
+        "DOC-INT-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "raw body"
+      ],
+      "mentions_missed": [
+        "idempotent"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting steps but does not address idempotence or the status of the issue."
+    },
+    {
+      "ticket_id": "DEV-0340",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-DEPLOY-002",
+        "DOC-SEC-003",
+        "DOC-API-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims, so none of them are violated or covered."
+    },
+    {
+      "ticket_id": "DEV-0107",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-001",
+        "DOC-SEC-001",
+        "DOC-SEC-003",
+        "DOC-SEC-002",
+        "DOC-SEC-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "Revoke all API keys for the affected account immediately.",
+        "This is disruptive and it is the correct first action.",
+        "Then, force a password reset and terminate active sessions for the affected users from the team members page.",
+        "Review the audit log for the period in question, filtering by the affected user, and record anything unexpected before it ages out.",
+        "Finally, enable multi-factor authentication for all users if it is not already mandatory for the organisation."
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a step-by-step plan for addressing the issue, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0025",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-ONB-001",
+        "DOC-DEPLOY-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "port",
+        "initial delay"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting advice and does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0020",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-003",
+        "DOC-AUTH-003",
+        "DOC-ONB-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required points, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0251",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ONB-001",
+        "DOC-ONB-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-ONB-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "resources belong to services and services belong to projects",
+        "connect a repository or push a container image",
+        "the build service detects common project layouts automatically",
+        "set any environment variables the application needs before the first deployment rather than after it",
+        "deploy, then watch the logs for the first sixty seconds",
+        "most first-deployment problems are visible immediately in startup output"
+      ],
+      "mentions_missed": [
+        "a project",
+        "a service within it"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a step-by-step guide for the first deployment, covering project creation, service setup, resource ownership, deployment methods, build service behavior, environment variable setup, and problem visibility. It does not mention refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0229",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-003",
+        "DOC-API-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "raw body"
+      ],
+      "mentions_missed": [
+        "idempotent"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer provides a troubleshooting suggestion, but does not address idempotency or provide a specific delivery date for a fix."
+    },
+    {
+      "ticket_id": "DEV-0137",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-PERF-003",
+        "DOC-DATA-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-PERF-003",
+        "DOC-DATA-002",
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-001",
+        "DOC-DATA-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention refunds, fixes, or delivery dates, and does not claim any of these."
+    },
+    {
+      "ticket_id": "DEV-0085",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-001",
+        "DOC-SEC-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-001",
+        "DOC-SEC-001",
+        "DOC-SEC-003",
+        "DOC-SEC-003",
+        "DOC-SEC-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "answer focuses on immediate action, does not provide any information about refunds, fixes, or delivery dates"
+    },
+    {
+      "ticket_id": "DEV-0153",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-002",
+        "DOC-DEPLOY-002",
+        "DOC-DATA-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information and does not imply any of the claims to be avoided."
+    },
+    {
+      "ticket_id": "DEV-0028",
+      "action": "escalate",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-SEC-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-SEC-003",
+        "DOC-DATA-001",
+        "DOC-SEC-003",
+        "DOC-DATA-001",
+        "DOC-DATA-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims that must be covered, and does not make any claims that must not be made."
+    },
+    {
+      "ticket_id": "DEV-0195",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-ONB-001",
+        "DOC-DEPLOY-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "port",
+        "initial delay"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting advice and mentions specific potential causes and solutions, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0156",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ACCT-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-004",
+        "DOC-ACCT-001",
+        "DOC-SEC-001",
+        "DOC-AUTH-004",
+        "DOC-ACCT-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "answer does not mention refunds, fixing the issue, or a specific delivery date"
+    },
+    {
+      "ticket_id": "DEV-0130",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DEPLOY-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-DEPLOY-001",
+        "DOC-ONB-001",
+        "DOC-DEPLOY-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "port"
+      ],
+      "mentions_missed": [
+        "initial delay"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention initial delay, but does mention port. It does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0238",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-INT-001",
+        "DOC-INT-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-INT-001",
+        "DOC-INT-001",
+        "DOC-AUTH-004"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the claims that should be covered, and does not make any claims that should be avoided."
+    },
+    {
+      "ticket_id": "DEV-0117",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-003"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-003",
+        "DOC-API-003",
+        "DOC-AUTH-003"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "raw body"
+      ],
+      "mentions_missed": [
+        "idempotent"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "answer provides troubleshooting advice and mentions computing signature over raw body, but does not discuss idempotence or provide specific information about refunds, fixes, or delivery dates"
+    },
+    {
+      "ticket_id": "DEV-0244",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-API-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer does not mention any of the required information and does not make any of the claims to avoid making."
+    },
+    {
+      "ticket_id": "DEV-0016",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-004",
+        "DOC-SEC-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-004",
+        "DOC-AUTH-004",
+        "DOC-SEC-002",
+        "DOC-INT-001",
+        "DOC-SEC-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a general procedure for rotating a key without downtime, but does not mention any of the specific claims that should be covered."
+    },
+    {
+      "ticket_id": "DEV-0363",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-DATA-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-DATA-001",
+        "DOC-DATA-001",
+        "DOC-API-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "Jobs covering more than a million records commonly take several minutes",
+        "If the original link has expired, request a fresh link from the exports page",
+        "The underlying file is retained for seven days"
+      ],
+      "mentions_missed": [
+        "Check the exports page for job status"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "Answer provides some troubleshooting information, but does not address job status or issue resolution."
+    },
+    {
+      "ticket_id": "DEV-0055",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-API-002"
+      ],
+      "cited_doc_ids": [
+        "DOC-API-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "cursor",
+        "page size"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides guidance on how to avoid iterating issues, but does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0285",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-AUTH-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-AUTH-001",
+        "DOC-AUTH-001"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "account lock",
+        "session cookie"
+      ],
+      "mentions_missed": [],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides troubleshooting steps, but does not explicitly mention account lock or session cookie. It does not make any claims about refunds, fixes, or delivery dates."
+    },
+    {
+      "ticket_id": "DEV-0405",
+      "action": "auto_respond",
+      "can_answer": true,
+      "expected_doc_ids": [
+        "DOC-ONB-001"
+      ],
+      "cited_doc_ids": [
+        "DOC-ONB-001",
+        "DOC-DEPLOY-001",
+        "DOC-ONB-002"
+      ],
+      "citation_hit": true,
+      "mentions_covered": [
+        "resources belong to services and services belong to projects",
+        "connect a repository or push a container image",
+        "the build service detects common project layouts automatically",
+        "set any environment variables the application needs before the first deployment rather than after it",
+        "deploy, then watch the logs for the first sixty seconds",
+        "most first-deployment problems are visible immediately in startup output"
+      ],
+      "mentions_missed": [
+        "a project",
+        "a service within it"
+      ],
+      "claims_violated": [],
+      "claims_cleared": [
+        "a refund has been issued",
+        "the issue has been fixed on our side",
+        "a specific delivery date for a fix"
+      ],
+      "notes": "The answer provides a step-by-step guide for the first deployment, covering project creation, service setup, resource ownership, deployment methods, build service behavior, environment variable setup, and problem visibility. It does not mention refunds, fixes, or delivery dates."
+    }
+  ]
+}

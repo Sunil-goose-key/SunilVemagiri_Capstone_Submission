@@ -1,0 +1,181 @@
+{
+  "run_metadata": {
+    "input_path": "05_Datasets/validation_tickets.json",
+    "output_path": "evaluation/results/",
+    "run_timestamp": "2026-09-18T18:33:12.069891+00:00",
+    "tickets_in_file": 80
+  },
+  "volume": {
+    "processed": 80,
+    "auto_responded": 64,
+    "escalated": 16,
+    "blocked": 0
+  },
+  "business": {
+    "first_contact_resolution_pct": 80.0,
+    "escalation_rate_pct": 20.0,
+    "note": "auto_responded/escalated here describe THIS run's routing decisions, not measured live customer outcomes -- there are no live customers. Compare against the historical baseline in history.* for context, not as equivalence."
+  },
+  "technical": {
+    "classification_report": {
+      "account_access": {
+        "precision": 0.6666666666666666,
+        "recall": 0.5,
+        "f1-score": 0.5714285714285715,
+        "support": 4.0
+      },
+      "api_key_issue": {
+        "precision": 0.8571428571428571,
+        "recall": 1.0,
+        "f1-score": 0.923076923076923,
+        "support": 6.0
+      },
+      "api_usage_question": {
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1-score": 0.6666666666666666,
+        "support": 4.0
+      },
+      "authentication_failure": {
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.8,
+        "support": 3.0
+      },
+      "billing_query": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 10.0
+      },
+      "compliance_request": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "configuration_help": {
+        "precision": 0.3,
+        "recall": 1.0,
+        "f1-score": 0.4615384615384615,
+        "support": 3.0
+      },
+      "data_export": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 1.0
+      },
+      "data_residency": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 6.0
+      },
+      "database_issue": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 1.0
+      },
+      "deployment_failure": {
+        "precision": 0.5555555555555556,
+        "recall": 1.0,
+        "f1-score": 0.7142857142857143,
+        "support": 5.0
+      },
+      "feature_request": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 3.0
+      },
+      "integration_help": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 3.0
+      },
+      "onboarding": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 4.0
+      },
+      "performance_degradation": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 3.0
+      },
+      "quota_or_overage": {
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "f1-score": 0.8,
+        "support": 2.0
+      },
+      "rate_limit": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "rollback_request": {
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1-score": 0.6666666666666666,
+        "support": 6.0
+      },
+      "security_incident": {
+        "precision": 0.8,
+        "recall": 1.0,
+        "f1-score": 0.888888888888889,
+        "support": 4.0
+      },
+      "sso_configuration": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 1.0
+      },
+      "unclear_request": {
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.8,
+        "support": 6.0
+      },
+      "webhook_issue": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 3.0
+      },
+      "accuracy": 0.8125,
+      "macro avg": {
+        "precision": 0.7657287157287158,
+        "recall": 0.7651515151515151,
+        "f1-score": 0.7405705405705405,
+        "support": 80.0
+      },
+      "weighted avg": {
+        "precision": 0.8377579365079366,
+        "recall": 0.8125,
+        "f1-score": 0.7975305250305251,
+        "support": 80.0
+      }
+    },
+    "retrieval_hit_rate_pct": 96.2,
+    "latency_seconds": {
+      "mean": 0.042,
+      "median": 0.039,
+      "p95": 0.051
+    }
+  },
+  "governance": {
+    "decisions_logged_distinct_tickets": 80,
+    "tickets_processed": 80,
+    "log_reconciles": true,
+    "guardrail_activations": {},
+    "private_data_detections": 0
+  }
+}

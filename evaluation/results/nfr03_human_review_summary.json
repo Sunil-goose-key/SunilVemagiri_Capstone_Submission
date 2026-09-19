@@ -1,0 +1,36 @@
+{
+  "run_metadata": {
+    "method": "Human review per Evaluation_Framework.pdf: sample >=50 responses, two independent raters, report agreement rate",
+    "source_worksheet": "04_Submission/NFR03_Human_Review_Worksheet.csv",
+    "sampled_from": "evaluation/results/results.jsonl (final gate run, metrics_20260918T183312Z.json)",
+    "raters": 2,
+    "completed_at": "2026-09-19T09:32:46.996319+00:00"
+  },
+  "sample_size": 71,
+  "hallucination": {
+    "tickets_flagged_by_both_raters": 1,
+    "rate_pct": 1.4,
+    "target_pct": 5.0,
+    "passes_target": true,
+    "flagged_ticket": "VAL-0063"
+  },
+  "citation_accuracy": {
+    "tickets_flagged_by_both_raters": 1,
+    "accuracy_pct": 98.6,
+    "target_pct": 95.0,
+    "passes_target": true,
+    "flagged_ticket": "VAL-0063"
+  },
+  "inter_rater_agreement": {
+    "agreed_rows": 71,
+    "total_rows": 71,
+    "agreement_rate_pct": 100.0
+  },
+  "VAL-0063_finding": {
+    "ticket_subject": "Permission changes not taking effect",
+    "generated_answer": "The role was granted at project scope rather than organisation scope. To check, go to the project settings and verify the role's scope. If it's at project scope, you'll need to change it to organisation scope for the permissions to take effect.",
+    "cited_doc": "DOC-ACCT-001",
+    "issue": "The cause diagnosis (project vs. organisation scope) is directly supported by the passage's Common Causes section, but the specific instructed action (\"go to the project settings and verify the role's scope\") does not match the passage's actual Resolution step (\"check the effective permissions view for the user\"). Both raters independently flagged this as the answer drifting from its cited source on the specific how-to-check instruction.",
+    "both_raters_agreed": true
+  }
+}
